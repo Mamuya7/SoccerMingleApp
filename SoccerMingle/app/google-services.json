@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "1007328929374",
+    "firebase_url": "https://soccermingle.firebaseio.com",
+    "project_id": "soccermingle",
+    "storage_bucket": "soccermingle.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1007328929374:android:2a42a46aa14dc963fd36cf",
+        "android_client_info": {
+          "package_name": "com.don.soccermingle"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1007328929374-sdsb7p7jl50f5fp1o8i1ofoluk0vv39r.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDahPuC9gehttlBXCazowjcr8l_5xN8Wl4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1007328929374-sdsb7p7jl50f5fp1o8i1ofoluk0vv39r.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
