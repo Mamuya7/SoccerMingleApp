@@ -23,6 +23,7 @@ import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.don.soccermingle.AdminActivity;
 import com.don.soccermingle.HomeActivity;
 import com.don.soccermingle.R;
 import com.don.soccermingle.ui.login.LoginViewModel;
@@ -125,8 +126,14 @@ public class LoginActivity extends AppCompatActivity {
         String welcome = getString(R.string.welcome) + model.getDisplayName();
 
         // TODO : initiate successful logged in experience
-        Intent homeIntent = new Intent(this,HomeActivity.class);
-        startActivity(homeIntent);
+        String usergroup = model.getDisplayName();
+        if(usergroup.equals("admin")){
+            Intent adminIntent = new Intent(this, AdminActivity.class);
+            startActivity(adminIntent);
+        }else{
+            Intent homeIntent = new Intent(this,HomeActivity.class);
+            startActivity(homeIntent);
+        }
 
         Toast.makeText(getApplicationContext(), welcome, Toast.LENGTH_LONG).show();
     }

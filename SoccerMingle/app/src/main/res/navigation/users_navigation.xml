@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/mobile_navigation"
+    app:startDestination="@+id/navigation_scores">
+
+    <fragment
+        android:id="@+id/navigation_scores"
+        android:name="com.don.soccermingle.ui.score.ScoreFragment"
+        android:label="@string/title_scores"
+        tools:layout="@layout/fragment_score" />
+
+    <fragment
+        android:id="@+id/navigation_fixtures"
+        android:name="com.don.soccermingle.ui.fixture.FixtureFragment"
+        android:label="@string/title_fixtures"
+        tools:layout="@layout/fragment_fixture" />
+
+    <fragment
+        android:id="@+id/navigation_chats"
+        android:name="com.don.soccermingle.ui.chats.ChatsFragment"
+        android:label="@string/title_chats"
+        tools:layout="@layout/fragment_chat" />
+</navigation>

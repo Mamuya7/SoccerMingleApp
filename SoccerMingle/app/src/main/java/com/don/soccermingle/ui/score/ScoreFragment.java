@@ -23,19 +23,12 @@ public class ScoreFragment extends Fragment {
 
     private ScoreViewModel scoreViewModel;
     private ScoreRecyclerAdapter scoreRecyclerAdapter;
-    private FirebaseUtil scoreFirebaseUtil;
-    private FirebaseDatabase scoreFirebaseDb;
-    private DatabaseReference scoreDbReference;
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
         scoreViewModel =
                 ViewModelProviders.of(this).get(ScoreViewModel.class);
         View root = inflater.inflate(R.layout.fragment_score, container, false);
-
-        FirebaseUtil.openDbReference("soccermingle");
-        scoreFirebaseDb = scoreFirebaseUtil.firebaseDatabase;
-        scoreDbReference = scoreFirebaseUtil.databaseReference;
 
         scoreRecyclerAdapter = new ScoreRecyclerAdapter(root.getContext());
         RecyclerView scoreRecyclerView = root.findViewById(R.id.score_recycler_view);
