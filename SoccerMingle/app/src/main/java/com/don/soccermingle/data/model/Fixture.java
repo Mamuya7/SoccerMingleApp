@@ -5,26 +5,24 @@ public class Fixture {
     private String homeTeam;
     private String awayTeam;
     private String stadium;
-    private String homeScore;
-    private String awayScore;
     private String matchStatus;
+    private Result result;
 
-    public Fixture(String id, String homeTeam, String awayTeam, String stadium, String homeScore, String awayScore, String matchStatus) {
+    public Fixture(){}
+
+    public Fixture(String id, String homeTeam, String awayTeam, String stadium, String matchStatus) {
         this.id = id;
         this.homeTeam = homeTeam;
         this.awayTeam = awayTeam;
         this.stadium = stadium;
-        this.homeScore = homeScore;
-        this.awayScore = awayScore;
         this.matchStatus = matchStatus;
     }
 
-    public Fixture(String homeTeam, String awayTeam, String homeScore, String awayScore, String stadium, String matchStatus) {
+    public Fixture(String homeTeam, String awayTeam, String stadium, String matchStatus,Result result) {
+        this.setResult(result);
         this.homeTeam = homeTeam;
         this.awayTeam = awayTeam;
         this.stadium = stadium;
-        this.homeScore = homeScore;
-        this.awayScore = awayScore;
         this.matchStatus = matchStatus;
     }
 
@@ -60,27 +58,19 @@ public class Fixture {
         this.stadium = stadium;
     }
 
-    public String getHomeScore() {
-        return homeScore;
-    }
-
-    public void setHomeScore(String homeScore) {
-        this.homeScore = homeScore;
-    }
-
-    public String getAwayScore() {
-        return awayScore;
-    }
-
-    public void setAwayScore(String awayScore) {
-        this.awayScore = awayScore;
-    }
-
     public String getMatchStatus() {
         return matchStatus;
     }
 
     public void setMatchStatus(String matchStatus) {
         this.matchStatus = matchStatus;
+    }
+
+    public Result getResult() {
+        return result;
+    }
+
+    public void setResult(Result result) {
+        this.result = result;
     }
 }

@@ -7,6 +7,7 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.Nullable;
 import androidx.annotation.NonNull;
@@ -17,6 +18,7 @@ import androidx.lifecycle.ViewModelProviders;
 import com.don.soccermingle.R;
 import com.don.soccermingle.data.FirebaseUtil;
 import com.don.soccermingle.data.model.Fixture;
+import com.don.soccermingle.data.model.Result;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
@@ -42,7 +44,7 @@ public class HomeFragment extends Fragment {
                 ViewModelProviders.of(this).get(HomeViewModel.class);
         View root = inflater.inflate(R.layout.fragment_home, container, false);
 
-        FirebaseUtil.openDbReference("Fixture");
+        FirebaseUtil.openDbReference("fixture");
         scoreFirebaseDb = scoreFirebaseUtil.firebaseDatabase;
         scoreDbReference = scoreFirebaseUtil.databaseReference;
 
@@ -58,14 +60,28 @@ public class HomeFragment extends Fragment {
                 new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
+                        Result result = new Result(homescore.getText().toString(),
+                                awayscore.getText().toString(),"60","40");
                         Fixture fixture = new Fixture(
                                 hometeam.getText().toString(), awayteam.getText().toString(),homescore.getText().toString(),
-                                awayscore.getText().toString(),stadium.getText().toString(),status.getText().toString()
+                                awayscore.getText().toString(),stadium.getText().toString(),status.getText().toString(),
+                                result
                         );
                         scoreDbReference.push().setValue(fixture);
+                        clearFields();
+                        Toast.makeText(getContext(),"Fixture Recorded",Toast.LENGTH_LONG);
                     }
                 }
         );
         return root;
+    }
+
+    public void clearFields(){
+        hometeam.setText("");
+        homescore.setText("");
+        awayteam.setText("");
+        awayscore.setText("");
+        status.setText("");
+        stadium.setText("");
     }
 }

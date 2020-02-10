@@ -33,10 +33,8 @@ public class ScoreRecyclerAdapter extends RecyclerView.Adapter<ScoreRecyclerAdap
     public ScoreRecyclerAdapter(Context context) {
         this.context = context;
         fixtureList = new ArrayList<Fixture>();
-//        fixtureList.add(new Fixture("1","man","liva","oldtraford","2","0","FT"));
-//        fixtureList.add(new Fixture("2","aseno","everton","emirates","1","1","HT"));
 
-        FirebaseUtil.openDbReference("Fixture");
+        FirebaseUtil.openDbReference("fixture");
         scoreFirebaseDb = scoreFirebaseUtil.firebaseDatabase;
         scoreDbReference = scoreFirebaseUtil.databaseReference;
 
@@ -44,7 +42,7 @@ public class ScoreRecyclerAdapter extends RecyclerView.Adapter<ScoreRecyclerAdap
             @Override
             public void onChildAdded(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
                 Fixture fixture = dataSnapshot.getValue(Fixture.class);
-//                fixture.setId(dataSnapshot.getKey());
+                fixture.setId(dataSnapshot.getKey());
                 fixtureList.add(fixture);
 
                 notifyItemInserted(fixtureList.size()-1);
@@ -111,8 +109,8 @@ public class ScoreRecyclerAdapter extends RecyclerView.Adapter<ScoreRecyclerAdap
         public void bind(Fixture fixture) {
             homeTeam.setText(fixture.getHomeTeam());
             awayTeam.setText(fixture.getAwayTeam());
-            homeScore.setText(fixture.getHomeScore());
-            awayScore.setText(fixture.getAwayScore());
+            homeScore.setText(fixture.getResult().getHomeScores());
+            awayScore.setText(fixture.getResult().getAwayScores());
             matchStatus.setText(fixture.getMatchStatus());
         }
     }
