@@ -63,8 +63,8 @@ public class HomeFragment extends Fragment {
                         Result result = new Result(homescore.getText().toString(),
                                 awayscore.getText().toString(),"60","40");
                         Fixture fixture = new Fixture(
-                                hometeam.getText().toString(), awayteam.getText().toString(),homescore.getText().toString(),
-                                awayscore.getText().toString(),stadium.getText().toString(),status.getText().toString(),
+                                hometeam.getText().toString(), awayteam.getText().toString(),
+                                stadium.getText().toString(),status.getText().toString(),
                                 result
                         );
                         scoreDbReference.push().setValue(fixture);

@@ -14,6 +14,7 @@ import androidx.lifecycle.ViewModelProviders;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.don.soccermingle.HomeActivity;
 import com.don.soccermingle.R;
 import com.don.soccermingle.data.FirebaseUtil;
 import com.google.firebase.database.DatabaseReference;
@@ -30,7 +31,7 @@ public class ScoreFragment extends Fragment {
                 ViewModelProviders.of(this).get(ScoreViewModel.class);
         View root = inflater.inflate(R.layout.fragment_score, container, false);
 
-        scoreRecyclerAdapter = new ScoreRecyclerAdapter(root.getContext());
+        scoreRecyclerAdapter = new ScoreRecyclerAdapter(root.getContext(), getActivity());
         RecyclerView scoreRecyclerView = root.findViewById(R.id.score_recycler_view);
         scoreRecyclerView.setAdapter(scoreRecyclerAdapter);
 

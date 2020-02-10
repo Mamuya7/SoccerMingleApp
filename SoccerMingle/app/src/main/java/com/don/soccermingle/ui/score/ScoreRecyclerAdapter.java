@@ -8,6 +8,11 @@ import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentActivity;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.don.soccermingle.R;
@@ -23,6 +28,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class ScoreRecyclerAdapter extends RecyclerView.Adapter<ScoreRecyclerAdapter.ScoreViewHolder>{
+    public final FragmentActivity parentActivity;
     Context context;
     private FirebaseUtil scoreFirebaseUtil;
     private FirebaseDatabase scoreFirebaseDb;
@@ -30,7 +36,8 @@ public class ScoreRecyclerAdapter extends RecyclerView.Adapter<ScoreRecyclerAdap
     private ChildEventListener scoreChildEventListener;
 
     private static List<Fixture> fixtureList;
-    public ScoreRecyclerAdapter(Context context) {
+    public ScoreRecyclerAdapter(Context context, FragmentActivity parentActivity) {
+        this.parentActivity = parentActivity;
         this.context = context;
         fixtureList = new ArrayList<Fixture>();
 
@@ -90,6 +97,8 @@ public class ScoreRecyclerAdapter extends RecyclerView.Adapter<ScoreRecyclerAdap
     }
 
     public class ScoreViewHolder extends RecyclerView.ViewHolder {
+        private final View scoreItemView;
+
         TextView homeTeam;
         TextView awayTeam;
         TextView homeScore;
@@ -98,6 +107,7 @@ public class ScoreRecyclerAdapter extends RecyclerView.Adapter<ScoreRecyclerAdap
 
         public ScoreViewHolder(@NonNull View itemView) {
             super(itemView);
+            this.scoreItemView = itemView;
 
             homeTeam = itemView.findViewById(R.id.home_team_view);
             homeScore = itemView.findViewById(R.id.home_score_view);
@@ -112,6 +122,20 @@ public class ScoreRecyclerAdapter extends RecyclerView.Adapter<ScoreRecyclerAdap
             homeScore.setText(fixture.getResult().getHomeScores());
             awayScore.setText(fixture.getResult().getAwayScores());
             matchStatus.setText(fixture.getMatchStatus());
+
+            scoreItemView.setOnClickListener(
+                    new View.OnClickListener() {
+                        @Override
+                        public void onClick(View v) {
+                            Fragment scoreDetails = new ScoreDetails();
+                            FragmentManager fragmentManager = parentActivity.getSupportFragmentManager();
+                            FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+                            fragmentTransaction.replace(R.id.score_fragment,scoreDetails);
+                            fragmentTransaction.addToBackStack(null);
+                            fragmentTransaction.commit();
+                        }
+                    }
+            );
         }
     }
 }
