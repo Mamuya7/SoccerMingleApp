@@ -48,8 +48,8 @@ public class ScoreDetails extends Fragment {
 
 
         Adapter adapter = new Adapter(getChildFragmentManager());
-        adapter.addFragment(new GalleryFragment(), "Today");
-        adapter.addFragment(new SendFragment(), "Week");
+        adapter.addFragment(new GalleryFragment(), "Statistics");
+        adapter.addFragment(new SendFragment(), "Lineups");
 //        adapter.addFragment(new MonthFixturesFragment(), "Month");
 //        adapter.addFragment(new AllFixturesFragment(), "Month");
 //        adapter.addFragment(new MyTeamsFixturesFragment(), "My Teams");
