@@ -11,7 +11,7 @@ import androidx.fragment.app.FragmentPagerAdapter;
 import androidx.viewpager.widget.ViewPager;
 
 import com.don.soccermingle.R;
-import com.don.soccermingle.ui.gallery.GalleryFragment;
+import com.don.soccermingle.ui.score.statistics.StatisticsFragment;
 import com.don.soccermingle.ui.send.SendFragment;
 import com.google.android.material.tabs.TabLayout;
 
@@ -48,7 +48,7 @@ public class ScoreDetails extends Fragment {
 
 
         Adapter adapter = new Adapter(getChildFragmentManager());
-        adapter.addFragment(new GalleryFragment(), "Statistics");
+        adapter.addFragment(new StatisticsFragment(), "Statistics");
         adapter.addFragment(new SendFragment(), "Lineups");
 //        adapter.addFragment(new MonthFixturesFragment(), "Month");
 //        adapter.addFragment(new AllFixturesFragment(), "Month");

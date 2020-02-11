@@ -11,6 +11,8 @@ import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProviders;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import com.don.soccermingle.R;
 
@@ -22,14 +24,14 @@ public class StatisticsFragment extends Fragment {
                              ViewGroup container, Bundle savedInstanceState) {
         statisticsViewModel =
                 ViewModelProviders.of(this).get(StatisticsViewModel.class);
-        View root = inflater.inflate(R.layout.fragment_slideshow, container, false);
-        final TextView textView = root.findViewById(R.id.text_slideshow);
-        statisticsViewModel.getText().observe(this, new Observer<String>() {
-            @Override
-            public void onChanged(@Nullable String s) {
-                textView.setText(s);
-            }
-        });
+        View root = inflater.inflate(R.layout.fragment_statistics, container, false);
+
+        RecyclerView staisticsRecycler = root.findViewById(R.id.statistics_recycler);
+        StatisticsRecyclerAdapter statisticsAdapter = new StatisticsRecyclerAdapter(root.getContext());
+        staisticsRecycler.setAdapter(statisticsAdapter);
+
+        LinearLayoutManager linearLayoutManager = new LinearLayoutManager(root.getContext());
+        staisticsRecycler.setLayoutManager(linearLayoutManager);
         return root;
     }
 }
